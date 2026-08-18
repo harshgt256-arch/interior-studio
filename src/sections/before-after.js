@@ -122,5 +122,59 @@ export default function initBeforeAfter() {
     demoObserver.observe(frame);
   }
 
+  // Tuning Panel Integration
+  const tuningBtn = document.getElementById('btn-toggle-tuning');
+  const tuningPanel = document.getElementById('ba-tuning-panel');
+  
+  if (tuningBtn && tuningPanel) {
+    tuningBtn.addEventListener('click', () => {
+      const isVisible = tuningPanel.style.display === 'block';
+      tuningPanel.style.display = isVisible ? 'none' : 'block';
+    });
+
+    const tuneScale = document.getElementById('tune-scale');
+    const tuneX = document.getElementById('tune-x');
+    const tuneY = document.getElementById('tune-y');
+    
+    const valScale = document.getElementById('val-scale');
+    const valX = document.getElementById('val-x');
+    const valY = document.getElementById('val-y');
+    
+    const copyBtn = document.getElementById('btn-copy-tuning');
+
+    const updateTuning = () => {
+      const scale = tuneScale.value;
+      const x = tuneX.value;
+      const y = tuneY.value;
+      
+      valScale.textContent = Number(scale).toFixed(3);
+      valX.textContent = `${x}px`;
+      valY.textContent = `${y}px`;
+      
+      frame.style.setProperty('--ba-before-scale', scale);
+      frame.style.setProperty('--ba-before-x', `${x}px`);
+      frame.style.setProperty('--ba-before-y', `${y}px`);
+    };
+
+    if (tuneScale && tuneX && tuneY) {
+      tuneScale.addEventListener('input', updateTuning);
+      tuneX.addEventListener('input', updateTuning);
+      tuneY.addEventListener('input', updateTuning);
+    }
+
+    if (copyBtn) {
+      copyBtn.addEventListener('click', () => {
+        const cssCode = `--ba-before-scale: ${tuneScale.value}; --ba-before-x: ${tuneX.value}px; --ba-before-y: ${tuneY.value}px;`;
+        navigator.clipboard.writeText(cssCode).then(() => {
+          const originalText = copyBtn.textContent;
+          copyBtn.textContent = 'Copied to Clipboard!';
+          setTimeout(() => {
+            copyBtn.textContent = originalText;
+          }, 2000);
+        });
+      });
+    }
+  }
+
   return { setPos };
 }

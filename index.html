@@ -157,6 +157,30 @@
           </div>
         </div>
 
+        <!-- Before/After Calibration Panel -->
+        <div class="container" style="position: relative; z-index: 10;">
+          <div class="ba__tuning-panel" id="ba-tuning-panel" style="display: none;">
+            <p style="font-size: 13px; font-weight: 600; margin-bottom: 16px; color: var(--color-accent); text-transform: uppercase; letter-spacing: 0.1em;">⚙ Before Image Alignment</p>
+            <div class="ba__tuning-group">
+              <label>Scale: <span id="val-scale">1.000</span></label>
+              <input type="range" id="tune-scale" min="0.80" max="1.30" step="0.002" value="1.00">
+            </div>
+            <div class="ba__tuning-group">
+              <label>Shift X: <span id="val-x">0px</span></label>
+              <input type="range" id="tune-x" min="-60" max="60" step="1" value="0">
+            </div>
+            <div class="ba__tuning-group">
+              <label>Shift Y: <span id="val-y">0px</span></label>
+              <input type="range" id="tune-y" min="-60" max="60" step="1" value="0">
+            </div>
+            <button type="button" class="btn btn--gold" id="btn-copy-tuning" style="margin-top: var(--space-4); width: 100%; font-size: 11px; padding: 10px;">Copy CSS Alignment Values</button>
+          </div>
+          
+          <div style="text-align: center; margin-top: 24px; margin-bottom: 8px;">
+            <button type="button" class="btn btn--outline" id="btn-toggle-tuning" style="font-size: 11px; padding: 8px 16px; opacity: 0.75; letter-spacing: 0.05em; background: rgba(255, 255, 255, 0.03);">⚙ Tune Image Alignment</button>
+          </div>
+        </div>
+
         <div class="container ba__stats">
           <div class="ba__stat">
             <p class="ba__stat-value">200+</p>
