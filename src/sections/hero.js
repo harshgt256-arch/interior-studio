@@ -68,64 +68,46 @@ export default function initHero() {
   };
   window.addEventListener('revealText', reveal, { once: true });
 
-  /* CTA: smooth-scroll to the portfolio section. */
-  if (cta) {
-    cta.addEventListener('click', (e) => {
-      e.preventDefault();
-      const target = document.getElementById('portfolio');
-      if (target) target.scrollIntoView({ behavior: 'smooth' });
-    });
-  }
+
 
   /**
    * Start scrubbing once the first frame is decodable — hides the loader
-   * and wires the pinned, zero-lag scrub over the video's duration.
+  /**
+   * Start scrubbing immediately — wires the pinned, zero-lag scrub.
    */
   const start = () => {
     if (loader) loader.classList.add('is-loaded');
+    reveal();
 
     gsap.to(video, {
-      currentTime: video.duration || 0,
+      currentTime: () => video.duration || 0,
       ease: 'none',
       scrollTrigger: {
         trigger: section,
         start: 'top top',
-        /* Pin without spacer space and end the scrub when the press strip
-           arrives — the hero releases BEFORE the Before/After section so the
-           BA content scrolls in visibly instead of being covered by the
-           pinned hero (and no dead zone either). */
-        end: () => {
-          const next = document.getElementById('press-strip');
-          if (!next) return '+=1620px';
-          return `+=${Math.max(100, next.offsetTop - section.offsetTop)}px`;
-        },
+        end: '+=100%',
         pin: true,
-        pinSpacing: false,
+        pinSpacing: true,
         scrub: true, // 1:1, zero easing lag
         anticipatePin: 1,
-        onUpdate(self) {
-          if (!revealed && self.progress >= 0.85) {
-            window.dispatchEvent(
-              new CustomEvent('revealText', { detail: { progress: self.progress } }),
-            );
-          }
-        },
+        invalidateOnRefresh: true,
       },
     });
   };
 
-  if (video.readyState >= 1) {
-    start();
-  } else {
-    video.addEventListener('loadeddata', start, { once: true });
-    video.addEventListener(
-      'error',
-      () => {
-        if (loader) loader.classList.add('is-loaded');
-      },
-      { once: true },
-    );
-  }
+  start();
+
+  const refreshTriggers = () => {
+    ScrollTrigger.refresh();
+  };
+
+  video.addEventListener('loadedmetadata', refreshTriggers);
+  video.addEventListener('durationchange', refreshTriggers);
+  video.addEventListener('error', () => {
+    if (loader) loader.classList.add('is-loaded');
+    reveal();
+  });
 
   return null;
 }
+

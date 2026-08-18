@@ -36,6 +36,19 @@ gsap.ticker.lagSmoothing(0);
 
 window.lenis = lenis; // handy for debugging / anchor scrolling
 
+/* ---------- Smooth Scroll to Anchor Links using Lenis ---------- */
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  anchor.addEventListener('click', (e) => {
+    const targetId = anchor.getAttribute('href');
+    if (targetId === '#') return;
+    const target = document.querySelector(targetId);
+    if (target) {
+      e.preventDefault();
+      lenis.scrollTo(target);
+    }
+  });
+});
+
 /* ---------- Header: solid backdrop once scrolled past the hero ---------- */
 function initHeader() {
   const header = document.getElementById('header');

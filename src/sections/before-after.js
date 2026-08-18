@@ -22,6 +22,7 @@ export default function initBeforeAfter() {
 
   let pos = 50;
   let demoProxy = null;
+  let isDragging = false;
 
   function setPos(p) {
     pos = Math.min(96, Math.max(4, p));
@@ -44,17 +45,20 @@ export default function initBeforeAfter() {
 
   function onPointerDown(e) {
     killDemo();
+    isDragging = true;
     frame.setPointerCapture(e.pointerId);
     frame.classList.add('is-dragging');
     updateFromPointer(e.clientX);
   }
 
   function onPointerMove(e) {
-    if (e.buttons !== 1 && e.pointerType !== 'touch') return;
+    if (!isDragging) return;
     updateFromPointer(e.clientX);
   }
 
-  function onPointerUp() {
+  function onPointerUp(e) {
+    if (!isDragging) return;
+    isDragging = false;
     frame.classList.remove('is-dragging');
   }
 

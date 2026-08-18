@@ -71,32 +71,22 @@ export default function initInteriorTour() {
       }),
   });
 
-  /* Start scrubbing once the first frame is decodable. */
+  /**
+   * Start scrubbing immediately — wires the pinned, zero-lag scrub.
+   */
   const start = () => {
     gsap.to(video, {
-      currentTime: video.duration || 0,
+      currentTime: () => video.duration || 0,
       ease: 'none',
       scrollTrigger: {
         trigger: section,
         start: 'top top',
-        /* Pin without spacer space. The scrub runs the kitchen video's full
-           duration and ends exactly when the Portfolio section arrives at the
-           top of the viewport — the viewer sees the animation complete, then
-           the next section takes over. The tour paints above the following
-           section while pinned, so nothing covers the video.
-           NOTE: section.offsetTop is unreliable here (the tour sits inside a
-           positioned pin-spacer, so offsetTop is 0) — measure absolute
-           document positions instead. */
-        end: () => {
-          const next = document.getElementById('portfolio');
-          if (!next) return '+=1620px';
-          const absTop = (el) => el.getBoundingClientRect().top + window.scrollY;
-          return `+=${Math.max(100, absTop(next) - absTop(section))}px`;
-        },
+        end: '+=100%',
         pin: true,
-        pinSpacing: false,
+        pinSpacing: true,
         scrub: true, // 1:1, zero easing lag
         anticipatePin: 1,
+        invalidateOnRefresh: true,
         onUpdate(self) {
           if (self.progress >= 0.9) revealLink();
         },
@@ -104,18 +94,17 @@ export default function initInteriorTour() {
     });
   };
 
-  if (video.readyState >= 1) {
-    start();
-  } else {
-    video.addEventListener('loadeddata', start, { once: true });
-    video.addEventListener(
-      'error',
-      () => {
-        /* video failed — poster frame still shows on the dark section */
-      },
-      { once: true },
-    );
-  }
+  start();
+
+  const refreshTriggers = () => {
+    ScrollTrigger.refresh();
+  };
+
+  video.addEventListener('loadedmetadata', refreshTriggers);
+  video.addEventListener('durationchange', refreshTriggers);
+  video.addEventListener('error', () => {
+    /* video failed — poster frame still shows on the dark section */
+  });
 
   return null;
 }
