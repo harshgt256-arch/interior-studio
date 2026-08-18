@@ -622,6 +622,11 @@ footer[id] {
   user-select: none;
   -webkit-user-select: none;
   background: var(--color-ink);
+
+  /* Calibrated default alignment values */
+  --ba-before-scale: 1.078;
+  --ba-before-x: -4px;
+  --ba-before-y: -58px;
 }
 
 .ba__frame.is-dragging {
