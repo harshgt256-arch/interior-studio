@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Atelier Interiors — Interior Design Studio</title>
+    <meta
+      name="description"
+      content="Atelier Interiors is a full-service interior design studio crafting calm, considered spaces for modern living."
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap"
+      rel="stylesheet"
+    />
+
+    <script type="module" src="/src/main.js"></script>
+  </head>
+
+  <body>
+    <!-- ============ Header ============ -->
+    <header class="site-header" id="header">
+      <div class="container site-header__inner">
+        <a class="brand" href="#hero">Atelier <em>Interiors</em></a>
+
+        <nav class="nav" aria-label="Primary">
+          <a class="nav__link" href="#services">Services</a>
+          <a class="nav__link" href="#portfolio">Work</a>
+          <a class="nav__link" href="#process">Process</a>
+          <a class="nav__link" href="#testimonials">Clients</a>
+        </nav>
+
+        <a class="btn btn--gold header-cta" href="#cta">Book a consultation</a>
+      </div>
+    </header>
+
+    <main>
+      <!-- ============ Hero — canvas scrub (frames1 · living room) ============ -->
+      <section class="hero" id="hero">
+        <video
+          class="hero__video"
+          id="hero-video"
+          src="/video/hero-scrub.mp4"
+          muted
+          loop
+          playsinline
+          preload="auto"
+          poster="/images/ba-after.jpg"
+          aria-hidden="true"
+        ></video>
+        <div class="hero__scrim" aria-hidden="true"></div>
+
+        <div class="hero__overlay" id="hero-overlay">
+          <span class="hero__label">AWARD-WINNING STUDIO</span>
+          <h1 class="hero__title">SPACES THAT TELL YOUR STORY</h1>
+          <p class="hero__sub">Crafting interiors that feel like home</p>
+          <a class="hero__cta" href="#portfolio">View Our Work +</a>
+        </div>
+
+        <div class="hero__scroll-indicator" id="hero-scroll-indicator" aria-hidden="true"></div>
+
+        <div class="canvas-loader" id="hero-loader" role="status" aria-label="Loading">
+          <span class="canvas-loader__bar"></span>
+        </div>
+      </section>
+
+      <!-- ============ Press strip — awards / recognition marquee (pure CSS loop) ============ -->
+      <section class="press-strip" id="press-strip" aria-label="As recognised by">
+        <div class="press-strip__inner">
+          <p class="press-strip__label">AS RECOGNISED BY</p>
+
+          <div class="press-strip__marquee">
+            <div class="press-strip__track">
+              <!-- set 1 (readable) -->
+              <span class="press-strip__badge">ELLE DECOR</span>
+              <span class="press-strip__badge">ARCHITECTURAL DIGEST</span>
+              <span class="press-strip__badge">ID AWARDS 2024</span>
+              <span class="press-strip__badge">DESIGN WEEK</span>
+              <span class="press-strip__badge">DESIGNLINES</span>
+              <span class="press-strip__badge">BETTER HOMES</span>
+              <span class="press-strip__badge">FHM DESIGN</span>
+              <span class="press-strip__badge">DEZEEN</span>
+              <span class="press-strip__badge">WALLPAPER*</span>
+              <!-- set 2 (duplicate for the loop) -->
+              <span class="press-strip__badge" aria-hidden="true">ELLE DECOR</span>
+              <span class="press-strip__badge" aria-hidden="true">ARCHITECTURAL DIGEST</span>
+              <span class="press-strip__badge" aria-hidden="true">ID AWARDS 2024</span>
+              <span class="press-strip__badge" aria-hidden="true">DESIGN WEEK</span>
+              <span class="press-strip__badge" aria-hidden="true">DESIGNLINES</span>
+              <span class="press-strip__badge" aria-hidden="true">BETTER HOMES</span>
+              <span class="press-strip__badge" aria-hidden="true">FHM DESIGN</span>
+              <span class="press-strip__badge" aria-hidden="true">DEZEEN</span>
+              <span class="press-strip__badge" aria-hidden="true">WALLPAPER*</span>
+              <!-- set 3 (duplicate for the loop) -->
+              <span class="press-strip__badge" aria-hidden="true">ELLE DECOR</span>
+              <span class="press-strip__badge" aria-hidden="true">ARCHITECTURAL DIGEST</span>
+              <span class="press-strip__badge" aria-hidden="true">ID AWARDS 2024</span>
+              <span class="press-strip__badge" aria-hidden="true">DESIGN WEEK</span>
+              <span class="press-strip__badge" aria-hidden="true">DESIGNLINES</span>
+              <span class="press-strip__badge" aria-hidden="true">BETTER HOMES</span>
+              <span class="press-strip__badge" aria-hidden="true">FHM DESIGN</span>
+              <span class="press-strip__badge" aria-hidden="true">DEZEEN</span>
+              <span class="press-strip__badge" aria-hidden="true">WALLPAPER*</span>
+              <!-- set 4 (duplicate for the loop) -->
+              <span class="press-strip__badge" aria-hidden="true">ELLE DECOR</span>
+              <span class="press-strip__badge" aria-hidden="true">ARCHITECTURAL DIGEST</span>
+              <span class="press-strip__badge" aria-hidden="true">ID AWARDS 2024</span>
+              <span class="press-strip__badge" aria-hidden="true">DESIGN WEEK</span>
+              <span class="press-strip__badge" aria-hidden="true">DESIGNLINES</span>
+              <span class="press-strip__badge" aria-hidden="true">BETTER HOMES</span>
+              <span class="press-strip__badge" aria-hidden="true">FHM DESIGN</span>
+              <span class="press-strip__badge" aria-hidden="true">DEZEEN</span>
+              <span class="press-strip__badge" aria-hidden="true">WALLPAPER*</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ Before / After — drag reveal slider ============ -->
+      <section class="ba" id="before-after">
+        <div class="container ba__head">
+          <span class="ba__label">TRANSFORMATION</span>
+          <h2 class="ba__title" data-reveal-line>BEFORE &amp; AFTER</h2>
+          <p class="ba__subtitle">Drag to reveal the transformation</p>
+          <svg class="ba__arrows" width="64" height="20" viewBox="0 0 64 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M18 4l-6 6 6 6" />
+            <line x1="20" y1="10" x2="44" y2="10" />
+            <path d="M46 4l6 6-6 6" />
+          </svg>
+        </div>
+
+        <div
+          class="ba__frame"
+          id="ba-frame"
+          role="slider"
+          aria-label="Drag to reveal the before and after"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuenow="50"
+          tabindex="0"
+        >
+          <!-- AFTER (bottom layer, always visible): real interior photo from the uploaded footage -->
+          <img class="ba__img ba__img--after" src="/images/ba-after.jpg" alt="Room after redesign — fully styled interior" draggable="false" />
+          <!-- BEFORE (top layer, clipped to the handle): the original room photo -->
+          <img class="ba__img ba__img--before" src="/images/before-photo.jpg" alt="Original room before redesign" draggable="false" />
+          <span class="ba__badge ba__badge--before">BEFORE</span>
+          <span class="ba__badge ba__badge--after">AFTER</span>
+          <div class="ba__handle" aria-hidden="true">
+            <span class="ba__handle-knob">
+              <svg width="18" height="10" viewBox="0 0 18 10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 1L1 5l4 4M13 1l4 4-4 4" />
+              </svg>
+            </span>
+          </div>
+        </div>
+
+        <div class="container ba__stats">
+          <div class="ba__stat">
+            <p class="ba__stat-value">200+</p>
+            <p class="ba__stat-label">Projects Completed</p>
+          </div>
+          <div class="ba__stat">
+            <p class="ba__stat-value">15</p>
+            <p class="ba__stat-label">Years of Experience</p>
+          </div>
+          <div class="ba__stat">
+            <p class="ba__stat-value">50+</p>
+            <p class="ba__stat-label">Design Awards</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ Services — 4-card grid (2x2) ============ -->
+      <section class="section services" id="services">
+        <div class="container">
+          <div class="services__head">
+            <span class="services__label">WHAT WE OFFER</span>
+            <h2 class="services__title" data-reveal-line>OUR EXPERTISE</h2>
+          </div>
+
+          <div class="services__grid">
+            <article class="service-card" data-reveal>
+              <svg class="service-card__icon" width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M20 6l14 11v15a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V17z" />
+                <path d="M15 34v-9h10v9" />
+                <path d="M12.5 17.5h3M24.5 17.5h3" />
+              </svg>
+              <h3 class="service-card__title">Residential Design</h3>
+              <p class="service-card__text">
+                Bespoke homes designed around the way you live — from spatial
+                planning to the final layer of styling.
+              </p>
+              <a class="service-card__link" href="#cta">Learn more +</a>
+            </article>
+
+            <article class="service-card" data-reveal>
+              <svg class="service-card__icon" width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 34V10a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v24" />
+                <path d="M6 34h28" />
+                <path d="M15 12h4M21 12h4M15 17h4M21 17h4M15 22h4M21 22h4" />
+                <path d="M17 34v-6h6v6" />
+              </svg>
+              <h3 class="service-card__title">Commercial Spaces</h3>
+              <p class="service-card__text">
+                Offices, retail and hospitality environments that work hard, feel
+                human, and build your brand.
+              </p>
+              <a class="service-card__link" href="#cta">Learn more +</a>
+            </article>
+
+            <article class="service-card" data-reveal>
+              <svg class="service-card__icon" width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M5 22v-5a3 3 0 0 1 3-3h24a3 3 0 0 1 3 3v5" />
+                <path d="M5 22a3 3 0 0 0-3 3v3h4M35 22a3 3 0 0 1 3 3v3h-4" />
+                <path d="M6 28v6M34 28v6" />
+              </svg>
+              <h3 class="service-card__title">Furniture &amp; Styling</h3>
+              <p class="service-card__text">
+                Custom furniture, art direction and object styling that give every
+                room its own quiet character.
+              </p>
+              <a class="service-card__link" href="#cta">Learn more +</a>
+            </article>
+
+            <article class="service-card" data-reveal>
+              <svg class="service-card__icon" width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M20 6l12 7v14L20 34 8 27V13z" />
+                <path d="M8 13l12 7 12-7" />
+                <path d="M20 20v14" />
+                <path d="M13 16.5l7 3.5M27 16.5l-7 3.5" />
+              </svg>
+              <h3 class="service-card__title">3D Visualization</h3>
+              <p class="service-card__text">
+                Photoreal renders and walkthroughs that let you live in the space
+                before a single wall moves.
+              </p>
+              <a class="service-card__link" href="#cta">Learn more +</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ FAQ — accordion ============ -->
+      <section class="section faq" id="faq">
+        <div class="container faq__inner">
+          <div class="section-head faq__head">
+            <span class="eyebrow">Good to know</span>
+            <h2 data-reveal-line>Good to Know</h2>
+            <p>Quick answers before you order.</p>
+          </div>
+
+          <div class="faq__list" id="faq-list">
+            <div class="faq-item" data-faq-item>
+              <button class="faq-item__head" type="button" aria-expanded="false" aria-controls="faq-1">
+                <span class="faq-item__q">How much does a full home design project cost?</span>
+                <svg class="faq-item__chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M6 9l6 6 6-6" />
+                </svg>
+              </button>
+              <div class="faq-item__panel" id="faq-1" role="region">
+                <div class="faq-item__answer">
+                  <p>
+                    Every project is scoped individually. After a site visit we
+                    share a transparent fixed fee — no hourly surprises, and the
+                    quote covers design, sourcing, and project management.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item" data-faq-item>
+              <button class="faq-item__head" type="button" aria-expanded="false" aria-controls="faq-2">
+                <span class="faq-item__q">How long does a typical project take?</span>
+                <svg class="faq-item__chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M6 9l6 6 6-6" />
+                </svg>
+              </button>
+              <div class="faq-item__panel" id="faq-2" role="region">
+                <div class="faq-item__answer">
+                  <p>
+                    A single room usually takes 6–8 weeks from sign-off to
+                    installation; full homes run 3–5 months depending on
+                    scope, permits, and joinery lead times.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item" data-faq-item>
+              <button class="faq-item__head" type="button" aria-expanded="false" aria-controls="faq-3">
+                <span class="faq-item__q">Do you work with our own contractor and vendors?</span>
+                <svg class="faq-item__chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M6 9l6 6 6-6" />
+                </svg>
+              </button>
+              <div class="faq-item__panel" id="faq-3" role="region">
+                <div class="faq-item__answer">
+                  <p>
+                    Absolutely. We're happy to work alongside your architect and
+                    contractor, or bring in our own vetted team — you decide the
+                    level of involvement you want from us.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item" data-faq-item>
+              <button class="faq-item__head" type="button" aria-expanded="false" aria-controls="faq-4">
+                <span class="faq-item__q">Can we keep some of our existing furniture?</span>
+                <svg class="faq-item__chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M6 9l6 6 6-6" />
+                </svg>
+              </button>
+              <div class="faq-item__panel" id="faq-4" role="region">
+                <div class="faq-item__answer">
+                  <p>
+                    Yes — heirlooms and pieces you love can be reupholstered,
+                    refinished, or re-styled into the new scheme. It's often the
+                    detail that makes a space feel truly yours.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item" data-faq-item>
+              <button class="faq-item__head" type="button" aria-expanded="false" aria-controls="faq-5">
+                <span class="faq-item__q">Do you take on projects outside the city?</span>
+                <svg class="faq-item__chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M6 9l6 6 6-6" />
+                </svg>
+              </button>
+              <div class="faq-item__panel" id="faq-5" role="region">
+                <div class="faq-item__answer">
+                  <p>
+                    We regularly design remotely for clients across India and
+                    abroad — site visits are scheduled in phases and everything
+                    is managed through a shared project dashboard.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p class="faq__ask">
+            Didn't find your answer?
+            <a href="#cta">Ask us</a>
+          </p>
+        </div>
+      </section>
+
+      <!-- ============ Interior tour — video scrub (kitchen & dining orbit) ============ -->
+      <section class="tour" id="tour">
+        <video
+          class="tour__video"
+          id="tour-video"
+          src="/video/tour-scrub.mp4"
+          muted
+          loop
+          playsinline
+          preload="auto"
+          poster="/images/tour-poster.jpg"
+          aria-hidden="true"
+        ></video>
+        <div class="tour__scrim" aria-hidden="true"></div>
+
+        <div class="tour__content">
+          <span class="tour__eyebrow">KITCHEN &amp; DINING ORBIT</span>
+          <h2 class="tour__title" data-reveal-line>Step inside the <em>kitchen</em></h2>
+          <p class="tour__sub">
+            Walnut, brass, and honed stone — the material library comes alive in
+            this full-height rework of a family home.
+          </p>
+          <a class="tour__link" id="tour-link" href="#portfolio">Explore Full Portfolio &gt;</a>
+        </div>
+      </section>
+
+      <!-- ============ Portfolio — Selected Works (drag-to-scroll gallery) ============ -->
+      <section class="section portfolio" id="portfolio">
+        <div class="container portfolio__head">
+          <span class="portfolio__label">OUR WORK</span>
+          <h2 class="portfolio__title" data-reveal-line>SELECTED PROJECTS</h2>
+          <p class="portfolio__sub">A collection of spaces we've had the privilege to design</p>
+        </div>
+
+        <div class="portfolio__gallery" id="portfolio-gallery">
+          <article class="project-card">
+            <a class="project-card__media" href="#cta">
+              <img class="project-card__img" src="/images/projects/project-1.jpg" alt="Andheri Residence — living room" loading="lazy" />
+              <span class="project-card__overlay">View Project +</span>
+            </a>
+            <div class="project-card__meta">
+              <h3 class="project-card__title">Andheri Residence</h3>
+              <span class="project-card__cat">RESIDENTIAL</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <a class="project-card__media" href="#cta">
+              <img class="project-card__img" src="/images/projects/project-2.jpg" alt="Lower Parel Office — kitchen and dining" loading="lazy" />
+              <span class="project-card__overlay">View Project +</span>
+            </a>
+            <div class="project-card__meta">
+              <h3 class="project-card__title">Lower Parel Office</h3>
+              <span class="project-card__cat">COMMERCIAL</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <a class="project-card__media" href="#cta">
+              <img class="project-card__img" src="/images/projects/project-3.jpg" alt="Bandra Villa — living room detail" loading="lazy" />
+              <span class="project-card__overlay">View Project +</span>
+            </a>
+            <div class="project-card__meta">
+              <h3 class="project-card__title">Bandra Villa</h3>
+              <span class="project-card__cat">RESIDENTIAL</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <a class="project-card__media" href="#cta">
+              <img class="project-card__img" src="/images/projects/project-4.jpg" alt="Worli Penthouse — kitchen island" loading="lazy" />
+              <span class="project-card__overlay">View Project +</span>
+            </a>
+            <div class="project-card__meta">
+              <h3 class="project-card__title">Worli Penthouse</h3>
+              <span class="project-card__cat">RESIDENTIAL</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <a class="project-card__media" href="#cta">
+              <img class="project-card__img" src="/images/projects/project-5.jpg" alt="Juhu Townhouse — lounge seating" loading="lazy" />
+              <span class="project-card__overlay">View Project +</span>
+            </a>
+            <div class="project-card__meta">
+              <h3 class="project-card__title">Juhu Townhouse</h3>
+              <span class="project-card__cat">RESIDENTIAL</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <a class="project-card__media" href="#cta">
+              <img class="project-card__img" src="/images/projects/project-6.jpg" alt="BKC Studio — dining detail" loading="lazy" />
+              <span class="project-card__overlay">View Project +</span>
+            </a>
+            <div class="project-card__meta">
+              <h3 class="project-card__title">BKC Studio</h3>
+              <span class="project-card__cat">COMMERCIAL</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ============ Process — The Process ============ -->
+      <section class="section process" id="process">
+        <div class="container">
+          <div class="process__head">
+            <span class="process__label">HOW WE WORK</span>
+            <h2 class="process__title" data-reveal-line>THE PROCESS</h2>
+          </div>
+
+          <div class="process__grid">
+            <div class="process-step" data-reveal>
+              <span class="process-step__num">01</span>
+              <h3 class="process-step__title">Discovery &amp; Brief</h3>
+              <p class="process-step__text">
+                Site visits and lifestyle audits that dig into how you actually
+                live, before a single sketch is drawn.
+              </p>
+            </div>
+
+            <div class="process-step" data-reveal>
+              <span class="process-step__num">02</span>
+              <h3 class="process-step__title">Concept Design</h3>
+              <p class="process-step__text">
+                Concepts, renderings, and material palettes — iterated together
+                until the direction feels inevitable.
+              </p>
+            </div>
+
+            <div class="process-step" data-reveal>
+              <span class="process-step__num">03</span>
+              <h3 class="process-step__title">Material Sourcing</h3>
+              <p class="process-step__text">
+                Every finish, fabric, and piece specified and sourced, with
+                budgets locked along the way.
+              </p>
+            </div>
+
+            <div class="process-step" data-reveal>
+              <span class="process-step__num">04</span>
+              <h3 class="process-step__title">Final Delivery</h3>
+              <p class="process-step__text">
+                Installation, styling, and the key in your hand — a space that
+                feels truly finished.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ Testimonials — client love ============ -->
+      <section class="section testimonials" id="testimonials">
+        <div class="container">
+          <div class="testimonials__head">
+            <span class="testimonials__label">CLIENT LOVE</span>
+            <h2 class="testimonials__title" data-reveal-line>WHAT OUR CLIENTS SAY</h2>
+          </div>
+        </div>
+
+        <div class="container">
+          <div class="testimonials__viewport" id="testimonials-viewport">
+            <div class="testimonials__track">
+              <article class="testimonial-card">
+                <div class="testimonial-card__top">
+                  <span class="testimonial-card__avatar" aria-hidden="true">EC</span>
+                  <div class="testimonial-card__client">
+                    <p class="testimonial-card__name">Elena &amp; Marcus Chen</p>
+                    <p class="testimonial-card__city">London</p>
+                  </div>
+                </div>
+                <span class="testimonial-card__stars" aria-label="5 out of 5 stars">★★★★★</span>
+                <blockquote class="testimonial-card__quote">
+                  “They turned our dark, chopped-up flat into the calmest room in
+                  London. We fight over who gets to stay home.”
+                </blockquote>
+                <p class="testimonial-card__tag">Full Home — Shoreditch, London</p>
+              </article>
+
+              <article class="testimonial-card">
+                <div class="testimonial-card__top">
+                  <span class="testimonial-card__avatar" aria-hidden="true">JT</span>
+                  <div class="testimonial-card__client">
+                    <p class="testimonial-card__name">James Thornton</p>
+                    <p class="testimonial-card__city">London</p>
+                  </div>
+                </div>
+                <span class="testimonial-card__stars" aria-label="5 out of 5 stars">★★★★★</span>
+                <blockquote class="testimonial-card__quote">
+                  “Every deadline was met, every budget respected. The kitchen is
+                  the heart of our house and they understood that immediately.”
+                </blockquote>
+                <p class="testimonial-card__tag">Kitchen — Hampstead, London</p>
+              </article>
+
+              <article class="testimonial-card">
+                <div class="testimonial-card__top">
+                  <span class="testimonial-card__avatar" aria-hidden="true">SR</span>
+                  <div class="testimonial-card__client">
+                    <p class="testimonial-card__name">Sofia Ramirez</p>
+                    <p class="testimonial-card__city">New York</p>
+                  </div>
+                </div>
+                <span class="testimonial-card__stars" aria-label="5 out of 5 stars">★★★★★</span>
+                <blockquote class="testimonial-card__quote">
+                  “The art curation alone was worth it. Our hallway now feels like
+                  a private gallery that happens to be at home.”
+                </blockquote>
+                <p class="testimonial-card__tag">Styling &amp; Art — Brooklyn, New York</p>
+              </article>
+
+              <article class="testimonial-card">
+                <div class="testimonial-card__top">
+                  <span class="testimonial-card__avatar" aria-hidden="true">DK</span>
+                  <div class="testimonial-card__client">
+                    <p class="testimonial-card__name">David &amp; Kim Osei</p>
+                    <p class="testimonial-card__city">London</p>
+                  </div>
+                </div>
+                <span class="testimonial-card__stars" aria-label="5 out of 5 stars">★★★★★</span>
+                <blockquote class="testimonial-card__quote">
+                  “A renovation we actually enjoyed. Their project management meant
+                  we never once had to chase a contractor.”
+                </blockquote>
+                <p class="testimonial-card__tag">Renovation — Greenwich, London</p>
+              </article>
+
+              <article class="testimonial-card">
+                <div class="testimonial-card__top">
+                  <span class="testimonial-card__avatar" aria-hidden="true">RN</span>
+                  <div class="testimonial-card__client">
+                    <p class="testimonial-card__name">Rahul &amp; Priya Nair</p>
+                    <p class="testimonial-card__city">Mumbai</p>
+                  </div>
+                </div>
+                <span class="testimonial-card__stars" aria-label="5 out of 5 stars">★★★★★</span>
+                <blockquote class="testimonial-card__quote">
+                  “They transformed our apartment into something from a magazine.”
+                </blockquote>
+                <p class="testimonial-card__tag">Residential — Bandra, Mumbai</p>
+              </article>
+            </div>
+          </div>
+
+          <p class="testimonials__disclaimer">All reviews are unpaid and shared with permission</p>
+        </div>
+      </section>
+
+      <!-- ============ Tagline marquee — luxury quote strip (pure CSS loop) ============ -->
+      <section class="tagline-marquee" id="tagline-marquee" aria-label="Studio philosophy">
+        <div class="tagline-marquee__track">
+          <!-- set 1 (readable) -->
+          <span class="tagline-marquee__item">Great Design Changes How You Feel<span class="tagline-marquee__sep">◆</span></span>
+          <span class="tagline-marquee__item">Every Room Has A Story<span class="tagline-marquee__sep">◆</span></span>
+          <span class="tagline-marquee__item">Design With Intention<span class="tagline-marquee__sep">◆</span></span>
+          <span class="tagline-marquee__item">Details Define Excellence<span class="tagline-marquee__sep">◆</span></span>
+          <span class="tagline-marquee__item">Space Is Emotion<span class="tagline-marquee__sep">◆</span></span>
+          <!-- set 2 (duplicate for the loop) -->
+          <span class="tagline-marquee__item" aria-hidden="true">Great Design Changes How You Feel<span class="tagline-marquee__sep">◆</span></span>
+          <span class="tagline-marquee__item" aria-hidden="true">Every Room Has A Story<span class="tagline-marquee__sep">◆</span></span>
+          <span class="tagline-marquee__item" aria-hidden="true">Design With Intention<span class="tagline-marquee__sep">◆</span></span>
+          <span class="tagline-marquee__item" aria-hidden="true">Details Define Excellence<span class="tagline-marquee__sep">◆</span></span>
+          <span class="tagline-marquee__item" aria-hidden="true">Space Is Emotion<span class="tagline-marquee__sep">◆</span></span>
+        </div>
+      </section>
+
+      <!-- ============ Instagram — photo grid (Follow Us) ============ -->
+      <section class="section instagram" id="instagram">
+        <div class="container">
+          <div class="instagram__head">
+            <h2 class="instagram__title" data-reveal-line>FOLLOW OUR JOURNEY</h2>
+            <p class="instagram__handle">@atelier.interiors</p>
+          </div>
+
+          <div class="instagram__grid">
+            <a class="insta-tile" href="https://instagram.com/atelier.interiors" target="_blank" rel="noopener" data-reveal>
+              <img class="insta-tile__img" src="/images/instagram/insta-1.jpg" alt="Instagram post — living room detail" loading="lazy" />
+              <span class="insta-tile__overlay">
+                <svg class="insta-tile__icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="3" y="3" width="18" height="18" rx="5" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle cx="17.3" cy="6.7" r="0.7" fill="currentColor" stroke="none" />
+                </svg>
+              </span>
+            </a>
+            <a class="insta-tile" href="https://instagram.com/atelier.interiors" target="_blank" rel="noopener" data-reveal>
+              <img class="insta-tile__img" src="/images/instagram/insta-2.jpg" alt="Instagram post — kitchen detail" loading="lazy" />
+              <span class="insta-tile__overlay">
+                <svg class="insta-tile__icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="3" y="3" width="18" height="18" rx="5" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle cx="17.3" cy="6.7" r="0.7" fill="currentColor" stroke="none" />
+                </svg>
+              </span>
+            </a>
+            <a class="insta-tile" href="https://instagram.com/atelier.interiors" target="_blank" rel="noopener" data-reveal>
+              <img class="insta-tile__img" src="/images/instagram/insta-3.jpg" alt="Instagram post — material palette" loading="lazy" />
+              <span class="insta-tile__overlay">
+                <svg class="insta-tile__icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="3" y="3" width="18" height="18" rx="5" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle cx="17.3" cy="6.7" r="0.7" fill="currentColor" stroke="none" />
+                </svg>
+              </span>
+            </a>
+            <a class="insta-tile" href="https://instagram.com/atelier.interiors" target="_blank" rel="noopener" data-reveal>
+              <img class="insta-tile__img" src="/images/instagram/insta-4.jpg" alt="Instagram post — brass detail" loading="lazy" />
+              <span class="insta-tile__overlay">
+                <svg class="insta-tile__icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="3" y="3" width="18" height="18" rx="5" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle cx="17.3" cy="6.7" r="0.7" fill="currentColor" stroke="none" />
+                </svg>
+              </span>
+            </a>
+            <a class="insta-tile" href="https://instagram.com/atelier.interiors" target="_blank" rel="noopener" data-reveal>
+              <img class="insta-tile__img" src="/images/instagram/insta-5.jpg" alt="Instagram post — reading nook" loading="lazy" />
+              <span class="insta-tile__overlay">
+                <svg class="insta-tile__icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="3" y="3" width="18" height="18" rx="5" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle cx="17.3" cy="6.7" r="0.7" fill="currentColor" stroke="none" />
+                </svg>
+              </span>
+            </a>
+            <a class="insta-tile" href="https://instagram.com/atelier.interiors" target="_blank" rel="noopener" data-reveal>
+              <img class="insta-tile__img" src="/images/instagram/insta-6.jpg" alt="Instagram post — sink detail" loading="lazy" />
+              <span class="insta-tile__overlay">
+                <svg class="insta-tile__icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="3" y="3" width="18" height="18" rx="5" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle cx="17.3" cy="6.7" r="0.7" fill="currentColor" stroke="none" />
+                </svg>
+              </span>
+            </a>
+          </div>
+
+          <p class="instagram__follow">
+            <a href="https://instagram.com/atelier.interiors" target="_blank" rel="noopener">View All on Instagram →</a>
+          </p>
+        </div>
+      </section>
+
+      <!-- ============ CTA — book a consultation ============ -->
+      <section class="section cta" id="cta">
+        <div class="container cta__inner">
+          <span class="eyebrow">GET STARTED</span>
+          <h2 class="cta__title" data-reveal-line>READY TO TRANSFORM YOUR SPACE?</h2>
+          <p class="cta__sub">
+            Book a complimentary 30-minute consultation with our lead designer.
+            We'll discuss your vision, your space, and the possibilities.
+          </p>
+          <div class="cta__actions">
+            <a class="btn btn--gold" href="mailto:studio@atelierinteriors.com?subject=Consultation%20request">Book a Consultation</a>
+            <a class="btn btn--outline" href="#portfolio">View Our Portfolio →</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ============ Footer ============ -->
+    <footer class="site-footer" id="footer">
+      <div class="container">
+        <div class="footer__top">
+          <div class="footer__brand">
+            <p class="footer__brand-name">Atelier Interiors</p>
+            <p class="footer__tagline">Crafting spaces since 2009</p>
+          </div>
+
+          <nav class="footer__col" aria-label="Studio">
+            <p class="footer__heading">Studio</p>
+            <a class="footer__link" href="#process">About</a>
+            <a class="footer__link" href="#press-strip">Awards</a>
+            <a class="footer__link" href="#instagram">Journal</a>
+            <a class="footer__link" href="#cta">Careers</a>
+            <a class="footer__link" href="#press-strip">Press</a>
+          </nav>
+
+          <nav class="footer__col" aria-label="Services">
+            <p class="footer__heading">Services</p>
+            <a class="footer__link" href="#portfolio">Residential</a>
+            <a class="footer__link" href="#portfolio">Commercial</a>
+            <a class="footer__link" href="#services">Furniture</a>
+            <a class="footer__link" href="#services">3D Visualization</a>
+            <a class="footer__link" href="#cta">Consultation</a>
+          </nav>
+
+          <nav class="footer__col" aria-label="Connect">
+            <p class="footer__heading">Connect</p>
+            <a class="footer__link" href="#cta">Contact Us</a>
+            <a class="footer__link" href="https://instagram.com/atelier.interiors" target="_blank" rel="noopener">Instagram</a>
+            <a class="footer__link" href="https://pinterest.com/atelierinteriors" target="_blank" rel="noopener">Pinterest</a>
+            <a class="footer__link" href="https://linkedin.com/company/atelier-interiors" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="footer__link" href="https://wa.me/12125550134" target="_blank" rel="noopener">WhatsApp</a>
+          </nav>
+        </div>
+
+        <div class="footer__keywords" aria-hidden="true">
+          <div class="footer__keywords-track">
+            <!-- set 1 (readable) -->
+            <span class="footer__keyword">Interior Design<span class="footer__kw-sep">·</span></span>
+            <span class="footer__keyword">Space Planning<span class="footer__kw-sep">·</span></span>
+            <span class="footer__keyword">Luxury Homes<span class="footer__kw-sep">·</span></span>
+            <span class="footer__keyword">Commercial Design<span class="footer__kw-sep">·</span></span>
+            <span class="footer__keyword">Home Styling<span class="footer__kw-sep">·</span></span>
+            <span class="footer__keyword">3D Visualization<span class="footer__kw-sep">·</span></span>
+            <span class="footer__keyword">Mumbai<span class="footer__kw-sep">·</span></span>
+            <span class="footer__keyword">India<span class="footer__kw-sep">·</span></span>
+            <!-- set 2 (duplicate for the loop) -->
+            <span class="footer__keyword">Interior Design<span class="footer__kw-sep">·</span></span>
+            <span class="footer__keyword">Space Planning<span class="footer__kw-sep">·</span></span>
+            <span class="footer__keyword">Luxury Homes<span class="footer__kw-sep">·</span></span>
+            <span class="footer__keyword">Commercial Design<span class="footer__kw-sep">·</span></span>
+            <span class="footer__keyword">Home Styling<span class="footer__kw-sep">·</span></span>
+            <span class="footer__keyword">3D Visualization<span class="footer__kw-sep">·</span></span>
+            <span class="footer__keyword">Mumbai<span class="footer__kw-sep">·</span></span>
+            <span class="footer__keyword">India<span class="footer__kw-sep">·</span></span>
+            <!-- set 3 (duplicate for the loop) -->
+            <span class="footer__keyword">Interior Design<span class="footer__kw-sep">·</span></span>
+            <span class="footer__keyword">Space Planning<span class="footer__kw-sep">·</span></span>
+            <span class="footer__keyword">Luxury Homes<span class="footer__kw-sep">·</span></span>
+            <span class="footer__keyword">Commercial Design<span class="footer__kw-sep">·</span></span>
+            <span class="footer__keyword">Home Styling<span class="footer__kw-sep">·</span></span>
+            <span class="footer__keyword">3D Visualization<span class="footer__kw-sep">·</span></span>
+            <span class="footer__keyword">Mumbai<span class="footer__kw-sep">·</span></span>
+            <span class="footer__keyword">India<span class="footer__kw-sep">·</span></span>
+            <!-- set 4 (duplicate for the loop) -->
+            <span class="footer__keyword">Interior Design<span class="footer__kw-sep">·</span></span>
+            <span class="footer__keyword">Space Planning<span class="footer__kw-sep">·</span></span>
+            <span class="footer__keyword">Luxury Homes<span class="footer__kw-sep">·</span></span>
+            <span class="footer__keyword">Commercial Design<span class="footer__kw-sep">·</span></span>
+            <span class="footer__keyword">Home Styling<span class="footer__kw-sep">·</span></span>
+            <span class="footer__keyword">3D Visualization<span class="footer__kw-sep">·</span></span>
+            <span class="footer__keyword">Mumbai<span class="footer__kw-sep">·</span></span>
+            <span class="footer__keyword">India<span class="footer__kw-sep">·</span></span>
+          </div>
+        </div>
+
+        <div class="footer__bottom">
+          <span>© 2025 Atelier Interiors. All rights reserved.</span>
+          <span class="footer__legal">
+            <a href="#">Privacy Policy</a> / <a href="#">Terms</a> / <a href="#">Sitemap</a>
+          </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Empty room before redesign">
+  <defs>
+    <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e6e0d6"/>
+      <stop offset="1" stop-color="#d8d0c4"/>
+    </linearGradient>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#cfd8d3"/>
+      <stop offset="1" stop-color="#eef0e8"/>
+    </linearGradient>
+  </defs>
+
+  <!-- wall -->
+  <rect width="1600" height="640" fill="url(#wall)"/>
+
+  <!-- floor -->
+  <rect y="620" width="1600" height="280" fill="#c4bcae"/>
+  <g stroke="#b3ab9d" stroke-width="3" opacity="0.7">
+    <line x1="0" y1="660" x2="1600" y2="660"/>
+    <line x1="0" y1="740" x2="1600" y2="740"/>
+    <line x1="0" y1="820" x2="1600" y2="820"/>
+    <line x1="200" y1="620" x2="120" y2="900"/>
+    <line x1="520" y1="620" x2="440" y2="900"/>
+    <line x1="840" y1="620" x2="760" y2="900"/>
+    <line x1="1160" y1="620" x2="1080" y2="900"/>
+    <line x1="1480" y1="620" x2="1400" y2="900"/>
+  </g>
+
+  <!-- window -->
+  <rect x="1060" y="150" width="380" height="380" rx="8" fill="url(#sky)" stroke="#b9b2a6" stroke-width="10"/>
+  <line x1="1250" y1="150" x2="1250" y2="530" stroke="#b9b2a6" stroke-width="10"/>
+  <line x1="1060" y1="340" x2="1440" y2="340" stroke="#b9b2a6" stroke-width="10"/>
+
+  <!-- baseboard -->
+  <rect y="600" width="1600" height="20" fill="#b3ab9d"/>
+
+  <!-- empty corner shadow -->
+  <ellipse cx="220" cy="640" rx="300" ry="26" fill="#000" opacity="0.08"/>
+  <ellipse cx="1250" cy="640" rx="420" ry="30" fill="#000" opacity="0.08"/>
+</svg>

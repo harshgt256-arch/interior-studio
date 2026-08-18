@@ -1,0 +1,71 @@
+/* ============================================================
+   Design System — Design Tokens
+   ============================================================ */
+
+:root {
+  /* ---------- Color ---------- */
+  --white: #FFFFFF;
+  --cream: #FAF7F2;
+  --off-white: #F5F0E8;
+  --charcoal: #1A1A1A;
+  --deep-warm: #2D2B27;
+  --gold: #C9A96E;
+  --sage: #8FA68B;
+  --text-muted: #7A7570;
+
+  /* Semantic aliases */
+  --color-bg: var(--cream);
+  --color-bg-alt: var(--off-white);
+  --color-surface: var(--white);
+  --color-ink: var(--charcoal);
+  --color-ink-soft: var(--deep-warm);
+  --color-accent: var(--gold);
+  --color-accent-soft: var(--sage);
+  --color-text-muted: var(--text-muted);
+
+  /* ---------- Typography ---------- */
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+
+  /* ---------- Motion ---------- */
+  --ease-standard: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition: 0.4s var(--ease-standard);
+
+  /* ---------- Spacing scale (4px base) ---------- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 28px;
+  --space-8: 32px;
+  --space-9: 36px;
+  --space-10: 40px;
+  --space-11: 44px;
+  --space-12: 48px;
+  --space-13: 52px;
+  --space-14: 56px;
+  --space-15: 60px;
+  --space-16: 64px;
+
+  /* ---------- Layout ---------- */
+  --container: 1240px;
+  --container-narrow: 880px;
+  --gutter: clamp(20px, 4vw, 48px);
+
+  /* ---------- Breakpoints ----------
+     mobile  < 768px
+     tablet  >= 768px and < 1024px
+     desktop >= 1024px
+  ------------------------------------ */
+  --bp-mobile: 768px;
+  --bp-desktop: 1024px;
+
+  /* ---------- Misc ---------- */
+  --radius: 2px;
+  --header-height: 76px;
+  --z-header: 100;
+  --z-canvas: 0;
+}
