@@ -98,7 +98,7 @@ export function initCanvasScrub({
 
   const FRAME_W = 1920;
   const FRAME_H = 1080;
-  const lower = Math.min(minFrame, EFFECTIVE_FRAMES - 1);
+  const lower = Math.max(1, Math.min(minFrame, EFFECTIVE_FRAMES));
 
   /** @type {Map<number, { img: HTMLImageElement, loaded: boolean }>} */
   const frames = new Map();
@@ -107,7 +107,7 @@ export function initCanvasScrub({
   let firstFrameReady = false;
   let scrollTrigger = null;
   let bgTimer = 0;
-  let bgCursor = 1;
+  let bgCursor = lower;
   let resizeObserver = null;
   let lastTouchY = 0;
   let destroyed = false;
@@ -136,8 +136,8 @@ export function initCanvasScrub({
 
   function primeWindow() {
     for (let i = 0; i <= preloadWindow; i += 1) {
-      getFrame(Math.min(current + i, EFFECTIVE_FRAMES - 1));
-      getFrame(Math.max(current - i, 0));
+      getFrame(Math.min(current + i, EFFECTIVE_FRAMES));
+      getFrame(Math.max(current - i, lower));
     }
   }
 
@@ -213,8 +213,8 @@ export function initCanvasScrub({
         const p = self.progress;
 
         current = Math.min(
-          EFFECTIVE_FRAMES - 1,
-          Math.max(lower, Math.round(p * EFFECTIVE_FRAMES)),
+          EFFECTIVE_FRAMES,
+          Math.max(lower, Math.round(lower + p * (EFFECTIVE_FRAMES - lower))),
         );
         primeWindow();
         draw();

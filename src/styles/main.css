@@ -307,6 +307,7 @@ footer[id] {
   background: var(--color-ink);
 }
 
+.hero__canvas,
 .hero__video {
   position: absolute;
   inset: 0;
@@ -971,6 +972,7 @@ footer[id] {
   background: var(--color-ink);
 }
 
+.tour__canvas,
 .tour__video {
   position: absolute;
   inset: 0;

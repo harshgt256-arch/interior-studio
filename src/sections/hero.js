@@ -1,5 +1,6 @@
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { initCanvasScrub, frameUrl } from '../utils/canvasScrub.js';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -8,25 +9,21 @@ const DESKTOP_QUERY = '(min-width: 768px)';
 /**
  * Hero — first section below the fixed nav.
  *
- * Desktop (>= 768px): a full-bleed <video> (all-keyframe encode of the
- * original upload) is scroll-scrubbed 1:1 with scroll — a GSAP tween on
- * `video.currentTime` pinned over 1620px gives frame-accurate, zero-lag
- * scrubbing at the video's native quality. A gold loader bar shows until
- * the first frame is decodable, then the section starts. Overlay copy
- * fades in when the `revealText` event fires at 85% progress.
+ * Desktop (>= 768px): an HTML5 <canvas> scrubbed 1:1 with scroll through 300 JPG frames
+ * (living room sequence in /frames-export/frames1/). Preloads the initial frame, hides
+ * the gold loading bar when rendered, and reveals overlay text on scroll.
  *
- * Mobile (< 768px): no scrubbing — the same video autoplays muted and
- * looping with statically visible copy (no fade).
+ * Mobile (< 768px): autoplay muted fallback video with static copy.
  */
 export default function initHero() {
   const section = document.getElementById('hero');
+  const canvas = document.getElementById('hero-canvas');
   const video = document.getElementById('hero-video');
   const overlay = document.getElementById('hero-overlay');
   const loader = document.getElementById('hero-loader');
   const scrollIndicator = document.getElementById('hero-scroll-indicator');
-  const cta = overlay ? overlay.querySelector('.hero__cta') : null;
 
-  if (!section || !video) return null;
+  if (!section) return null;
 
   const isDesktop = window.matchMedia(DESKTOP_QUERY).matches;
 
@@ -37,16 +34,20 @@ export default function initHero() {
   };
   window.addEventListener('scroll', hideIndicator, { passive: true });
 
-  /* ---------- Mobile fallback: autoplay, static copy ---------- */
+  /* ---------- Mobile fallback: autoplay video, static copy ---------- */
   if (!isDesktop) {
+    if (canvas) canvas.remove();
     if (loader) loader.remove();
-    video.play().catch(() => {
-      /* autoplay blocked — poster frame still shows */
-    });
+    if (video) {
+      video.play().catch(() => {
+        /* autoplay blocked — poster frame still shows */
+      });
+    }
     return null;
   }
 
-  /* ---------- Desktop: scroll-scrubbed video ---------- */
+  /* ---------- Desktop: 60fps Canvas Frame Scrubbing ---------- */
+  if (video) video.remove();
 
   const textEls = overlay
     ? overlay.querySelectorAll('.hero__label, .hero__title, .hero__sub, .hero__cta')
@@ -66,48 +67,24 @@ export default function initHero() {
       overwrite: 'auto',
     });
   };
+
+  /* Reveal text on event or start */
   window.addEventListener('revealText', reveal, { once: true });
+  reveal();
 
-
-
-  /**
-   * Start scrubbing once the first frame is decodable — hides the loader
-  /**
-   * Start scrubbing immediately — wires the pinned, zero-lag scrub.
-   */
-  const start = () => {
-    if (loader) loader.classList.add('is-loaded');
-    reveal();
-
-    gsap.to(video, {
-      currentTime: () => video.duration || 0,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: section,
-        start: 'top top',
-        end: '+=100%',
-        pin: true,
-        pinSpacing: true,
-        scrub: true, // 1:1, zero easing lag
-        anticipatePin: 1,
-        invalidateOnRefresh: true,
-      },
-    });
-  };
-
-  start();
-
-  const refreshTriggers = () => {
-    ScrollTrigger.refresh();
-  };
-
-  video.addEventListener('loadedmetadata', refreshTriggers);
-  video.addEventListener('durationchange', refreshTriggers);
-  video.addEventListener('error', () => {
-    if (loader) loader.classList.add('is-loaded');
-    reveal();
+  return initCanvasScrub({
+    canvasId: 'hero-canvas',
+    totalFrames: 300,
+    minFrame: 1,
+    buildUrl: (index) => frameUrl('frames1', index),
+    loader,
+    trigger: section,
+    start: 'top top',
+    end: '+=1620px',
+    pin: true,
+    pinSpacing: true,
+    textRevealAt: 0.85,
+    onReveal: reveal,
   });
-
-  return null;
 }
 
